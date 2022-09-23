@@ -1,4 +1,4 @@
-## flutter_mvvm_demo
+## Flutter MVVM 
 
 A new Flutter project to provide understanding regarding MVVM architecture.
 
