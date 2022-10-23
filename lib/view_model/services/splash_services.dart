@@ -18,11 +18,11 @@ class SplashServices {
       print(value.token.toString());
 
       if(value.token.toString() == 'null' || value.token.toString() == ''){
-        await Future.delayed(Duration(seconds: 3));
-        Navigator.pushNamed(context, RoutesName.login);
+        await Future.delayed(const Duration(seconds: 3));
+        Navigator.pushReplacementNamed(context, RoutesName.login);
       }else {
-        await  Future.delayed(Duration(seconds: 3));
-        Navigator.pushNamed(context, RoutesName.home);
+        await  Future.delayed(const Duration(seconds: 3));
+        Navigator.pushReplacementNamed(context, RoutesName.home);
       }
 
     }).onError((error, stackTrace){

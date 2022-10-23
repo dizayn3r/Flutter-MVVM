@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_demo/res/color.dart';
 import 'package:flutter_mvvm_demo/utils/routes/routes_name.dart';
 import 'package:flutter_mvvm_demo/utils/routes/routes.dart';
 import 'package:flutter_mvvm_demo/view_model/auth_view_model.dart';
@@ -15,13 +16,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers:[
+      providers: [
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
         ChangeNotifierProvider(create: (_) => UserViewModel())
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: AppColors.primary,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: AppColors.primary,
+            centerTitle: true,
+          ),
         ),
         initialRoute: RoutesName.splash,
         onGenerateRoute: Routes.generateRoute,

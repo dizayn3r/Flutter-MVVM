@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:http/http.dart';
 import 'package:flutter_mvvm_demo/data/exceptions/app_exceptions.dart';
 import 'package:flutter_mvvm_demo/data/network/BaseApiServices.dart';
 import 'package:http/http.dart' as http;
@@ -25,7 +24,7 @@ class NetworkApiService extends BaseApiServices {
   Future getPostApiResponse(String url, dynamic data) async {
     dynamic responseJson;
     try {
-      Response response = await post(Uri.parse(url), body: data)
+      http.Response response = await http.post(Uri.parse(url), body: data)
           .timeout(const Duration(seconds: 10));
 
       responseJson = returnResponse(response);
@@ -48,8 +47,7 @@ class NetworkApiService extends BaseApiServices {
         throw UnauthorisedException(response.body.toString());
       default:
         throw FetchDataException(
-            'Error occurred while communicating with server with status code' +
-                response.statusCode.toString());
+            'Error occurred while communicating with server with status code${response.statusCode}');
     }
   }
 }
